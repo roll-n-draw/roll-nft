@@ -18,7 +18,8 @@ Project developed in terms of [hackfs2022 hackathon](https://fs.ethglobal.com/).
 
 ## Technologies used
 
-Roll NFT would be implemented as NFT smart contract with mutable data and to make raffle rolls being available on different chains we will use Tableland (NFTPort).
-TheGraph would be used for detailed dashboard. With open possobility for Covalent being used for profile page and favorites.
+Roll NFT would be implemented as ERC1155 smart contract.
+Tableland will be used to reach data mutability and multi-chain presence (NFTPort).
+Detailed dashboard will be provided by TheGraph. With option for Covalent being used for profile page and favorites.
 To generate frontend would be used [Hyperdapp](https://hyperdapp.dev/).
-Valist to deliver smart contracts and frontend updates.
+Valist to deliver smart contract's and application's versions.
