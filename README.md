@@ -1,9 +1,9 @@
 # Roll NFT
 ## Project Description
 
-Roll NFT is raffle roll protocol for NFT assets. Designed to bring gambling aspect to NFT trades and exchanges.
+Raffle roll protocol for NFT assets, designed to bring gambling aspect to NFT trades and exchanges.
 
-Protocol allows to create raffles with existing NFT assets. Whether it's an NFT Avatar, Game asset or Digital art.
+Application allows to create raffles with existing NFT assets easy way. Whether it's an NFT Avatar, Game asset or Digital art.
 And play it among the participants who have tickets for this particular draw event. More draw entries - higher chances.
 
 Active draws could be found on dashboard and filtered by NFT collections and / or categories.
