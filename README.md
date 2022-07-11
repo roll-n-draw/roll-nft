@@ -23,3 +23,4 @@ Tableland will be used to reach data mutability and multi-chain presence (NFTPor
 Detailed dashboard will be provided by TheGraph. With option for Covalent being used for profile page and favorites.
 To generate frontend would be used [Hyperdapp](https://hyperdapp.dev/).
 Valist to deliver smart contract's and application's versions.
+To simplify Raffle roll creation will be used Composits (DataModels) from Ceramic (Glaze).
