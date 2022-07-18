@@ -1,4 +1,7 @@
 # Roll NFT
+
+## Application Front-end
+
 ## Project Description
 
 Raffle roll protocol for NFT assets, designed to bring gambling aspect to NFT trades and exchanges.
