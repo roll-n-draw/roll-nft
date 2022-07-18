@@ -7,18 +7,41 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  const VRF_COORDINATOR = "";
+  const LINK_TOKEN = "";
+  const SUBSCRIPTION_ID = "";
+  const KEY_HASH = "";
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const raffle_start_time = "";
+  const raffle_end_time = "";
+  const token = "";
+  const raffle_upper_limit = "";
+  const raffle_lower_limit = "";
+  const ticket_mint_cost = "";
+  const prizes = [];
 
-  await lock.deployed();
+  const RaffleFactory = await hre.ethers.getContractFactory("RaffleFactory");
+  const raffleFactory = await RaffleFactory.deploy(
+    VRF_COORDINATOR, 
+    LINK_TOKEN,
+    SUBSCRIPTION_ID,
+    KEY_HASH
+    );
+  const raffle = raffleFactory.createRollNFT(
+    raffle_start_time,
+    raffle_end_time,
+    token,
+    raffle_upper_limit,
+    raffle_lower_limit,
+    ticket_mint_cost,
+    prizes
+  )
 
-  console.log("Lock with 1 ETH deployed to:", lock.address);
+  await raffleFactory.deployed();
+
+  console.log("Raffle Factory deployed to:", raffleFactory.address);
+  console.log("Raffle deployed to:", raffle.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
