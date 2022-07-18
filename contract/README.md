@@ -11,3 +11,6 @@ GAS_REPORT=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
+
+
+Raffle ERC-721 Token (NFT) Contract was deployed to Mumbai at 0xBCbDc92e4fa95F90CB38Edf8a00e77e29588F7dD
