@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract RaffleERC721Token is ERC721, ERC721URIStorage {
+contract PrizeTokenNFT is ERC721, ERC721URIStorage {
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;

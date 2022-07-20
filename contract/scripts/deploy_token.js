@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const TokenFactory = await hre.ethers.getContractFactory("RaffleERC721Token");
+  const TokenFactory = await hre.ethers.getContractFactory("PrizeTokenNFT");
   const tokenContract = await TokenFactory.deploy();
   await tokenContract.deployed();
 
