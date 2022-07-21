@@ -65,9 +65,10 @@ contract RaffleFactory {
         // clone raffle implementation contract
         raffle = Raffle(implementation.clone(data));
         //initialize raffle contract
+        address[] memory _allRaffles = allRaffles;
         raffle.initialize(
-            string(abi.encodePacked("RAFFLE__",address(raffle))),
-            string(abi.encodePacked("RFL__",address(raffle))),
+            string(abi.encodePacked("RAFFLE__",_allRaffles.length)),
+            string(abi.encodePacked("RFL__",_allRaffles.length)),
             _prizeAddress, 
             _prizeId,
             msg.sender,
@@ -153,4 +154,6 @@ contract RaffleFactory {
         }
         token.transfer(to, amount);
     }
+
+    
 }
