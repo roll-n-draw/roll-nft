@@ -28,7 +28,7 @@ async function main() {
     SUBSCRIPTION_ID,
     KEY_HASH
     );
-  const raffle = raffleFactory.createRollNFT(
+  raffleFactory.createRollNFT(
     raffle_start_time,
     raffle_end_time,
     token,
@@ -41,7 +41,6 @@ async function main() {
   await raffleFactory.deployed();
 
   console.log("Raffle Factory deployed to:", raffleFactory.address);
-  console.log("Raffle deployed to:", raffle.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
