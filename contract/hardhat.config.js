@@ -22,9 +22,20 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-        mainnet: "YOUR_ETHERSCAN_API_KEY",
-        optimisticEthereum: "YOUR_OPTIMISTIC_ETHERSCAN_API_KEY",
-        arbitrumOne: "YOUR_ARBISCAN_API_KEY",
-    }
+      mainnet: "YOUR_ETHERSCAN_API_KEY",
+      optimisticEthereum: "YOUR_OPTIMISTIC_ETHERSCAN_API_KEY",
+      arbitrumOne: "YOUR_ARBISCAN_API_KEY",
+      rinkeby: "<rinkeby-api-key>"
+    },
+    customChains: [
+      {
+        network: "rinkeby",
+        chainId: 4,
+        urls: {
+          apiURL: "https://api-rinkeby.etherscan.io/api",
+          browserURL: "https://rinkeby.etherscan.io"
+        }
+      }
+    ]
   }
 };
