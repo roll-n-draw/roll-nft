@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
 // task action function receives the Hardhat Runtime Environment as second argument
 task(
