@@ -1,6 +1,8 @@
-# Sample Hardhat Project
+# Smart contracts for Roll NFT protocol. HackFS2022 submission.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+xx
+
+# Installation
 
 Try running some of the following tasks:
 
@@ -11,6 +13,4 @@ GAS_REPORT=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
-
-
 Raffle ERC-721 Token (NFT) Contract was deployed to Mumbai at 0x582DA0692dD4D67bD67B16083949c5589Ac80703

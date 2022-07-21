@@ -1,0 +1,19 @@
+{
+  "name": "contract",
+  "version": "1.0.0",
+  "description": "Smart contracts for Roll NFT protocol. HackFS2022 submission.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "hardhat": "^2.10.1"
+  },
+  "dependencies": {
+    "ethers": "^5.6.9"
+  }
+}
