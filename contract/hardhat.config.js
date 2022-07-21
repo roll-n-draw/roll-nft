@@ -16,4 +16,15 @@ task(
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.9",
+  networks: {
+    mainnet: { ... },
+    testnet: { ... }
+  },
+  etherscan: {
+    apiKey: {
+        mainnet: "YOUR_ETHERSCAN_API_KEY",
+        optimisticEthereum: "YOUR_OPTIMISTIC_ETHERSCAN_API_KEY",
+        arbitrumOne: "YOUR_ARBISCAN_API_KEY",
+    }
+  }
 };
