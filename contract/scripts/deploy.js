@@ -14,12 +14,12 @@ async function main() {
 
   const lockedAmount = hre.ethers.utils.parseEther("1");
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const RollHub = await hre.ethers.getContractFactory("Lock");
+  const rollHub = await RollHub.deploy(unlockTime, { value: lockedAmount });
 
-  await lock.deployed();
+  await rollHub.deployed();
 
-  console.log("Lock with 1 ETH deployed to:", lock.address);
+  console.log("Lock with 1 ETH deployed to:", rollHub.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
