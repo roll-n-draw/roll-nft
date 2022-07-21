@@ -1,4 +1,3 @@
-require("@nomicfoundation/hardhat-toolbox");
 require("@nomiclabs/hardhat-ethers");
 
 // task action function receives the Hardhat Runtime Environment as second argument
@@ -12,7 +11,4 @@ task(
   }
 );
 
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
-  solidity: "0.8.9",
-};
+module.exports = {};
