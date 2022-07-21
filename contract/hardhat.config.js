@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 require("hardhat-gas-reporter");
+require('solidity-coverage');
 
 // task action function receives the Hardhat Runtime Environment as second argument
 task(
