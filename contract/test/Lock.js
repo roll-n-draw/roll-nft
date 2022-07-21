@@ -5,6 +5,8 @@ const {
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
 const { ethers } = require("ethers");
+const hre = require("hardhat");
+const assert = require("assert");
 
 describe("Lock", function () {
   // We define a fixture to reuse the same setup in every test.
