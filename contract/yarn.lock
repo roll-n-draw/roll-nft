@@ -1487,7 +1487,7 @@
   dependencies:
     "check-error" "^1.0.2"
 
-"chai@^4.2.0", "chai@>= 2.1.2 < 5":
+"chai@^4.2.0", "chai@^4.3.6", "chai@>= 2.1.2 < 5":
   "integrity" "sha512-bbcp3YfHCUzMOvKqsztczerVgBKSsEijCySNlHHbX3VG1nskvqjz5Rfso1gGwD6w6oOV3eI60pKuMOV5MV7p3Q=="
   "resolved" "https://registry.npmjs.org/chai/-/chai-4.3.6.tgz"
   "version" "4.3.6"
