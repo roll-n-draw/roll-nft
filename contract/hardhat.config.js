@@ -26,10 +26,16 @@ module.exports = {
     gasPrice: 21
   },
   networks: {
-    mainnet: {},
+    mainnet: {
+      url: 'https://mainnet.infura.io/v3/${infuraProjectId}',
+    },
+    polygon: {
+      url: 'https://polygon-mainnet.infura.io/v3/${infuraProjectId}',
+    },
     mumbai: {
+      url: 'https://polygon-mumbai.infura.io/v3/${infuraProjectId}',
       urls: { 
-        apiURL: 'https://polygon-mainnet.infura.io/v3/${infuraProjectId}',
+        apiURL: 'https://polygon-mumbai.infura.io/v3/${infuraProjectId}',
         browserURL: "https://rinkeby.etherscan.io"
       }
     },
