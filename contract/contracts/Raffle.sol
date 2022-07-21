@@ -183,6 +183,10 @@ contract Raffle is Clone, Initializable, ERC721Upgradeable, VRFConsumerBaseV2 {
         emit RaffleWinner(winnerTicket);
     }
 
+    function getWinnerTicket() public view returns(uint256){
+        return winnerTicket;
+    }
+
 //     function onERC721Received(
 //         address,
 //         address,

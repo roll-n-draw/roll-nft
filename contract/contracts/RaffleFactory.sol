@@ -137,6 +137,16 @@ contract RaffleFactory {
         VRF_COORDINATOR.removeConsumer(subscriptionId, consumerAddress);
     }
 
+    function removeRaffleConsumer() public {
+        address[] memory _allRaffles = allRaffles;
+        for(uint256 i=0; i<_allRaffles.length;){
+            if(Raffle(_allRaffles[i]).getWinnerTicket() != 0) removeConsumer(_allRaffles[i]);
+            unchecked {
+                ++i;
+            }
+        }
+    }
+
     function cancelSubscription(address receivingWallet) public {
         if(owner != msg.sender){
             revert();
