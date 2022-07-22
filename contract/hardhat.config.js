@@ -4,8 +4,12 @@ require("@nomiclabs/hardhat-etherscan");
 require("hardhat-gas-reporter");
 require('solidity-coverage');
 require('dotenv').config();
+require("@nomiclabs/hardhat-waffle");
 
-const infuraProjectId = process.env.ROLLNFT_INFURA_API_ID;
+const fs = require("fs")
+const privateKey = fs.readFileSync(".secret").toString()
+const infuraProjectId = process.env.ROLLNFT_INFURA_API_ID
+
 // task action function receives the Hardhat Runtime Environment as second argument
 task(
   "blockNumber",
@@ -20,20 +24,32 @@ task(
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.9",
+  solidity: {
+    version: "0.8.9",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
   gasReporter: {
     currency: 'CHF',
     gasPrice: 21
   },
   networks: {
+    defaultNetwork: "hardhat",
     mainnet: {
       url: 'https://mainnet.infura.io/v3/${infuraProjectId}',
+      accounts: [privateKey]
     },
     polygon: {
       url: 'https://polygon-mainnet.infura.io/v3/${infuraProjectId}',
+      accounts: [privateKey]
     },
     mumbai: {
       url: 'https://polygon-mumbai.infura.io/v3/${infuraProjectId}',
+      accounts: [privateKey],
       urls: { 
         apiURL: 'https://polygon-mumbai.infura.io/v3/${infuraProjectId}',
         browserURL: "https://rinkeby.etherscan.io"

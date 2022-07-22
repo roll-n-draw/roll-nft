@@ -1,10 +1,15 @@
 {
-  "name": "contract",
-  "version": "1.0.0",
+  "name": "roll_NFT",
+  "version": "0.1.0",
+  "private": true,
   "description": "Smart contracts for Roll NFT protocol. HackFS2022 submission.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +20,29 @@
     "@nomicfoundation/hardhat-toolbox": "^1.0.2",
     "@nomiclabs/hardhat-ethers": "^2.1.0",
     "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "autoprefixer": "^10.4.7",
     "chai": "^4.3.6",
     "ethers": "^5.6.9",
     "hardhat": "^2.10.1",
     "hardhat-gas-reporter": "^1.0.8",
     "mocha": "^10.0.0",
-    "solidity-coverage": "^0.7.21"
+    "postcss": "^8.4.14",
+    "solidity-coverage": "^0.7.21",
+    "tailwindcss": "^3.1.6",
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.2"
+  },
+  "dependencies": {
+    "@maticnetwork/maticjs": "^3.4.0-beta.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.7.1",
+    "axios": "^0.27.2",
+    "ethereum-waffle": "^3.4.4",
+    "hardhat-waffle": "^0.0.1-security",
+    "ipfs-http-client": "^57.0.3",
+    "web3modal": "^1.9.8",
+    "next": "12.2.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

@@ -7,6 +7,11 @@ const { expect } = require("chai");
 const { ethers } = require("ethers");
 const hre = require("hardhat");
 const assert = require("assert");
+const { use } = require('@maticnetwork/maticjs');
+const { Web3ClientPlugin } = require('@maticnetwork/maticjs-web3');
+
+// install web3 plugin
+use(Web3ClientPlugin)
 
 describe("Lock", function () {
   // We define a fixture to reuse the same setup in every test.
