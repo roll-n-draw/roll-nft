@@ -22,11 +22,11 @@ contract RollNFT is ERC721URIStorage {
     /// @param Fee for Hosting a Roll
     uint256 hostingPrice = 0.001 ether;
 
-    mapping(uint256 => address) private rollIdToAddr;
+    mapping(uint256 => Roll) private idToRoll;
 
     struct Roll {
         uint rollId;
-        address rollAddress;
+        address ticketContract;
         address prizeContract;
         uint256 prizeId;
         // PrizeItem internal prize;
@@ -50,8 +50,8 @@ contract RollNFT is ERC721URIStorage {
 
     event RollHosted (
         uint indexed rollId,
-        address rollAddress,
-        IERC721 indexed prizeAddress,
+        address ticketContract,
+        IERC721 indexed prizeContract,
         uint256 prizeId;
         address indexed host,
         // address owner,
@@ -112,9 +112,13 @@ contract RollNFT is ERC721URIStorage {
         /// @dev Transfer selected NFT from owner to RollNFT Hub contract
         IERC721(_prizeContract).transferFrom(msg.sender, address(this), _prizeId);
 
-        rollIdToAddr[rollId] = Roll(
+        /// @note Provide ticketContract address
+        address ticketContract = address(0);
+
+        /// @note Provide rollContract address
+        idToRoll[rollId] = Roll(
             rollId, // uint rollId;
-            0x0, // address rollAddress;
+            ticketContract, // address rollAddress;
             _prizeContract, // address prizeContract;
             _prizeId, // uint256 prizeId;
             payable(msg.sender), // address payable host;
@@ -131,6 +135,19 @@ contract RollNFT is ERC721URIStorage {
             false, // bool finished;
             false, // bool rewardClaimed;
             false // bool prizeClaimed
+        );
+
+        emit RollHosted(
+            rollId,
+            ticketContract,
+            _prizeContract,
+            _prizeId,
+            msg.sender,
+            _ticketPrice,
+            _upperTicketLimit,
+            _lowerTicketLimit,
+            _endTime,
+            _startTime
         );
     }
     
