@@ -9,6 +9,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract RollTickets is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     using Counters for Counters.Counter;
+    address payable owner;
+    address public rollFactory;
 
     Counters.Counter private _tokenIdCounter;
 
@@ -31,7 +33,7 @@ contract RollTickets is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     // The following functions are overrides required by Solidity.
 
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) onlyOwner {
         super._burn(tokenId);
     }
 
