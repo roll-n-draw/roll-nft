@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 /// @dev nonReentrant modifier
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./RollTickets.sol";
 
 contract RollNFT is ERC721URIStorage {
     ///
@@ -33,8 +34,8 @@ contract RollNFT is ERC721URIStorage {
         address payable host;
         address payable owner;
         uint256 ticketPrice;
-        uint256 upperTicketLimit;
-        uint256 lowerTicketLimit;
+        uint256 ticketsUpperLimit;
+        uint256 ticketsLowerLimit;
         uint256 endTime;
         uint256 startTime;
         uint256 ticketsSold;
@@ -56,8 +57,8 @@ contract RollNFT is ERC721URIStorage {
         address indexed host,
         // address owner,
         uint256 ticketPrice,
-        uint256 upperTicketLimit,
-        uint256 lowerTicketLimit,
+        uint256 ticketsUpperLimit,
+        uint256 ticketsLowerLimit,
         uint256 endTime,
         uint256 startTime
         // uint256 ticketsSold,
@@ -78,7 +79,7 @@ contract RollNFT is ERC721URIStorage {
         bool claimed;
     }
 
-    constructor() {
+    constructor() ERC721("Roll NFT","RNFT") {
         /// @dev Set owner of the Roll protocol
         owner = payable(msg.sender);
     }
@@ -98,8 +99,8 @@ contract RollNFT is ERC721URIStorage {
         address _prizeContract,
         uint256 _prizeId,
         uint256 _ticketPrice,
-        uint256 _upperTicketLimit,
-        uint256 _lowerTicketLimit,
+        uint256 _ticketsUpperLimit,
+        uint256 _ticketsLowerLimit,
         uint256 _endTime,
         uint256 _startTime
     ) public payable returns (uint256) nonReentrant {
@@ -112,20 +113,44 @@ contract RollNFT is ERC721URIStorage {
         /// @dev Transfer selected NFT from owner to RollNFT Hub contract
         IERC721(_prizeContract).transferFrom(msg.sender, address(this), _prizeId);
 
+        bytes memory data = abi.encodePacked(
+            KEY_HASH,
+            subscriptionId,
+            _startTime,
+            _endTime,
+            _ticketsUpperLimit,
+            _ticketsLowerLimit,
+            _mintCost,
+            _mintToken,
+            feePercent,
+            address(this)
+        );
+        /// @dev Clone RollTickets implementation contract
+        rollTickets = RollTickets(implementation.clone(data));
+        /// @dev Initialize RollTickets contract
+        rollTickets.initialize(
+            string(abi.encodePacked("Roll_NFT_Tickets__",rollId)),
+            string(abi.encodePacked("RTCK__",rollId)),
+            _prizeAddress, 
+            _prizeId,
+            msg.sender,
+            address(VRF_COORDINATOR)
+        );
+
         /// @note Provide ticketContract address
-        address ticketContract = address(0);
+        address ticketsContract = address(rollTickets);
 
         /// @note Provide rollContract address
         idToRoll[rollId] = Roll(
             rollId, // uint rollId;
-            ticketContract, // address rollAddress;
+            ticketsContract, // address rollAddress;
             _prizeContract, // address prizeContract;
             _prizeId, // uint256 prizeId;
             payable(msg.sender), // address payable host;
             payable(address(0)), // address payable owner;
             _ticketPrice, // uint256 ticketPrice;
-            _upperTicketLimit, // uint256 upperTicketLimit;
-            _lowerTicketLimit, // uint256 lowerTicketLimit;
+            _ticketsUpperLimit, // uint256 upperTicketLimit;
+            _ticketsLowerLimit, // uint256 lowerTicketLimit;
             _endTime, // uint256 endTime;
             _startTime, // uint256 startTime;
             0, // uint256 ticketsSold;
@@ -139,7 +164,7 @@ contract RollNFT is ERC721URIStorage {
 
         emit RollHosted(
             rollId,
-            ticketContract,
+            ticketsContract,
             _prizeContract,
             _prizeId,
             msg.sender,
